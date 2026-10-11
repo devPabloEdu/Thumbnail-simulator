@@ -1,0 +1,41 @@
+.VideoCardContainer{
+    align-items: start;
+    justify-content: start;
+    color: var(--white);
+    width: 512px;
+    cursor: pointer;
+    img{
+        width: 512px;
+        height: 250px;
+        padding: 0;
+        border-radius: 8px;
+    }
+    h2{
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    h2:hover{
+        color: var(--light-gray);
+    }
+    .RowVideoCardInfos{
+    gap: 16px;
+        span{
+            color: var(--light-gray);
+            font-size: 14px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+        span:hover{
+            color: var(--primary-gray);
+        }
+    }
+}

@@ -1,0 +1,7 @@
+export type IVideoCard = {
+    title?: string;
+    imgSrc?: string;
+    channelName?: string;
+    numberOfViews?: number;
+    timeThatPublicated?: string;
+}
