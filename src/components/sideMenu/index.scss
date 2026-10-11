@@ -1,0 +1,25 @@
+.SideMenuContainer{
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+    position: absolute;
+    top: 10;
+    left: 0;
+    border-radius: 12px;
+    box-shadow: 1px 12px 10px rgba(0, 0, 0, 0.349);
+    .form-control {
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid var(--primary-gray);
+        border-radius: 12px;
+        color: var(--primary-gray);
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+            .buttonClear{
+                background-color: var(--primary-red);
+                border: 1px solid var(--primary-red);
+            }
+    }
+}
