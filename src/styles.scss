@@ -7,9 +7,10 @@
     --light-gray: #b8b8b8;
     --light-medium-gray: #585858;
     --white: white;
+    --body-black: #0f0f0f;
 }
 
 * {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--black);
+    background-color: var(--body-black);
 }
