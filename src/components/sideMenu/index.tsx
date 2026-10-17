@@ -1,4 +1,5 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import { useState, useRef } from 'react';
 import type { ISideMenu } from '../../types/ISideMenu';
 import './index.scss';
 
@@ -13,8 +14,43 @@ const SideMenu = ({
     dateOfThePublication,
     setDateOfThePublication,
     setImage,
-    image
 }: ISideMenu) => {
+    const defaultXPosition = 0;
+    const defaultYPosition = 80;
+    const [isDragging, setIsDragging] = useState<boolean>(false);
+    const [position, setPosition] = useState({
+        x: defaultXPosition,
+        y: defaultYPosition
+    });
+    const dragOffset = useRef({
+        x: 0,
+        y: 0
+    });
+
+    function handleMouseDown(e: React.MouseEvent<HTMLDivElement>) {
+        if (e.button !== 0) return; //0 é o botao esquerdo do mouse ( 1 é o do meio e 2 é o direito ) 
+        const targetToMoveSize = e.currentTarget.getBoundingClientRect();
+        dragOffset.current = {
+            x: e.clientX - targetToMoveSize.left,
+            y: e.clientY - targetToMoveSize.top,
+        }
+        setIsDragging(true);
+    }
+
+    function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+        if (!isDragging) return;
+
+        setPosition({
+            x: e.clientX - dragOffset.current.x,
+            y: e.clientY - dragOffset.current.y,
+        });
+    }
+
+    function handleMouseUp(e: React.MouseEvent<HTMLDivElement>) {
+        if (!e) return;
+        setIsDragging(false);
+    }
+
 
     if (!show) return null;
 
@@ -26,7 +62,17 @@ const SideMenu = ({
         setImage('');
     }
 
-    return <div className='SideMenuContainer p-4'>
+    return <div
+        className='SideMenuContainer p-4'
+        style={{
+            top: position.y,
+            left: position.x,
+            cursor: isDragging ? 'grabbing' : 'grab'
+        }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+    >
         <Row>
             <p>Preencha os campos abaixo conforme sua preferência</p>
         </Row>
@@ -41,13 +87,15 @@ const SideMenu = ({
                     type="file"
                     accept="image/*"
                     onChange={(e) => {
-                        const file = e.target.files?.[0];
+                        const input = e.currentTarget as HTMLInputElement;
+                        const file = input.files?.[0];
 
                         if (file) {
                             setImage(URL.createObjectURL(file));
                         }
                     }}
-                />            </Form.Group>
+                />
+            </Form.Group>
             <Form.Group className='mb-3'>
                 <Form.Label>Nome do canal</Form.Label>
                 <Form.Control type='text' onChange={(e) => setChannelName(e.target.value)} value={channelName} />
@@ -63,9 +111,19 @@ const SideMenu = ({
                         <Form.Control type='date' onChange={(e) => setDateOfThePublication(e.target.value)} value={dateOfThePublication} />
                     </Col>
                     <Col className='mb-3'>
-                        <Button className='mt-3 w-100 buttonClear' onClick={() => clearValues()}>Limpar tudo</Button>
+                        <Button
+                            className='mt-3 w-100 buttonClear'
+                            onClick={() => setPosition({
+                                x: defaultXPosition,
+                                y: defaultYPosition
+                            })}>
+                            Resetar posição
+                        </Button>
                     </Col>
                 </Row>
+            </Form.Group>
+            <Form.Group>
+                <Button className='mt-3 w-100 buttonClear' onClick={() => clearValues()}>Limpar tudo</Button>
             </Form.Group>
         </Form>
     </div>

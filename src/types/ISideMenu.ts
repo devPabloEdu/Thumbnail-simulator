@@ -10,4 +10,6 @@ export type ISideMenu = {
     setDateOfThePublication: (value: string) => void;
     image: string;
     setImage: (value: string) => void;
+    isLive?: boolean;
+    setIsLive?: (value: boolean) => void;
 }
