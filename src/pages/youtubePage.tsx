@@ -6,11 +6,11 @@ import Img3 from '../assets/Screenshot_2.png';
 import EmptyImage from '../assets/empty.png';
 import type { IVideoCard } from "../types/IVideoCard";
 
-const YoutubePage = ({channelName, numberOfViews, imgSrc, timeThatPublicated, title}: IVideoCard): React.ReactElement => {
+const YoutubePage = ({channelName, numberOfViews, imgSrc, timeThatPublicated, title, isLive}: IVideoCard): React.ReactElement => {
     return (
         <>
         <Container className="d-flex flex-row gap-3 justify-content-center align-items-start">
-            <VideoCard imgSrc={imgSrc || EmptyImage} title={title || 'Insira um título para seu vídeo'} channelName={channelName || 'Nome do canal'} numberOfViews={numberOfViews || 0} timeThatPublicated={timeThatPublicated || 'Data de publicação'} />
+            <VideoCard imgSrc={imgSrc || EmptyImage} title={title ||  'Insira um título para seu vídeo'} channelName={channelName || 'Nome do canal'} numberOfViews={numberOfViews || 0} timeThatPublicated={timeThatPublicated || 'Data de publicação'} isLive={isLive}/>
             <VideoCard imgSrc={Img2} title="Genryusai Yamamoto Death Scene || Bleach Thousand Year Blood War" channelName="Shu シュウ" numberOfViews={5310} timeThatPublicated="12/11/2025" />
             <VideoCard imgSrc={Img3} title="Entendendo a inicialização do OpenGL (GLX + C)" channelName="Carrara software" numberOfViews={801000} timeThatPublicated="10/05/2025" />
         </Container>

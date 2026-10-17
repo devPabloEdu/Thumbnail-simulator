@@ -8,6 +8,7 @@ function App() {
   const [numberOfViews, setNumberOfViews] = useState<number>();
   const [dateOfThePublication, setDateOfThePublication] = useState<string>('');
   const [image, setImage] = useState<string>('');
+  const [isLive, setIsLive] = useState<boolean>(false);
 
   return (
     <>
@@ -22,7 +23,8 @@ function App() {
       setDateOfThePublication={setDateOfThePublication} 
       image={image}
       setImage={setImage}
-
+      isLive={isLive}
+      setIsLive={setIsLive}
       />
       <YoutubePage
         title={title}
@@ -30,6 +32,7 @@ function App() {
         numberOfViews={numberOfViews}
         timeThatPublicated={dateOfThePublication}
         imgSrc={image}
+        isLive={isLive}
       />
     </>
   )

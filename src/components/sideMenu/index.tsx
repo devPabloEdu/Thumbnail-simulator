@@ -14,6 +14,8 @@ const SideMenu = ({
     dateOfThePublication,
     setDateOfThePublication,
     setImage,
+    isLive,
+    setIsLive,
 }: ISideMenu) => {
     const defaultXPosition = 0;
     const defaultYPosition = 80;
@@ -60,6 +62,7 @@ const SideMenu = ({
         setNumberOfViews(0);
         setDateOfThePublication('');
         setImage('');
+        setIsLive?.(false);
     }
 
     return <div
@@ -103,6 +106,13 @@ const SideMenu = ({
             <Form.Group className='mb-3'>
                 <Form.Label>Quantidade de visualizações</Form.Label>
                 <Form.Control type='number' onChange={(e) => setNumberOfViews(Number(e.target.value))} value={numberOfViews} />
+            </Form.Group>
+            <Form.Group className='mt-2 mb-2'>
+                <Form.Switch
+                    checked={isLive}
+                    label='Ao vivo'
+                    onClick={() => setIsLive?.(!isLive)}
+                />
             </Form.Group>
             <Form.Group>
                 <Form.Label className='mb-0'>Data de publicação</Form.Label>
