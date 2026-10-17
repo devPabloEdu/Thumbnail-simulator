@@ -5,4 +5,5 @@ export type IVideoCard = {
     numberOfViews?: number;
     timeThatPublicated?: string;
     isLive?: boolean;
+    videoLength?: string;
 }

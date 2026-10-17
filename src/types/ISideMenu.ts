@@ -12,4 +12,6 @@ export type ISideMenu = {
     setImage: (value: string) => void;
     isLive?: boolean;
     setIsLive?: (value: boolean) => void;
+    videoLength?: string;
+    setVideoLength?: (value: string) => void;
 }

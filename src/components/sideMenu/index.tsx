@@ -16,6 +16,8 @@ const SideMenu = ({
     setImage,
     isLive,
     setIsLive,
+    videoLength,
+    setVideoLength
 }: ISideMenu) => {
     const defaultXPosition = 0;
     const defaultYPosition = 80;
@@ -63,6 +65,7 @@ const SideMenu = ({
         setDateOfThePublication('');
         setImage('');
         setIsLive?.(false);
+        setVideoLength?.('');
     }
 
     return <div
@@ -114,15 +117,24 @@ const SideMenu = ({
                     onClick={() => setIsLive?.(!isLive)}
                 />
             </Form.Group>
+            {!isLive &&
+                <Form.Group>
+                    <Form.Label>Duração do vídeo</Form.Label>
+                    <Col md={5}><Form.Control className='mb-3' type='text' placeholder='00:00:00' value={videoLength} onChange={(e) => setVideoLength?.(e.target.value)} /></Col>
+                </Form.Group>
+            }
             <Form.Group>
-                <Form.Label className='mb-0'>Data de publicação</Form.Label>
                 <Row className='d-flex flex-row align-items-center w-100'>
-                    <Col>
-                        <Form.Control type='date' onChange={(e) => setDateOfThePublication(e.target.value)} value={dateOfThePublication} />
-                    </Col>
+                    {!isLive &&
+                        <>
+                            <Form.Label className='mb-0'>Data de publicação</Form.Label><Col>
+                                <Form.Control type='date' onChange={(e) => setDateOfThePublication(e.target.value)} value={dateOfThePublication} />
+                            </Col>
+                        </>
+                    }
                     <Col className='mb-3'>
                         <Button
-                            className='mt-3 w-100 buttonClear'
+                            className='mt-3 buttonClear'
                             onClick={() => setPosition({
                                 x: defaultXPosition,
                                 y: defaultYPosition

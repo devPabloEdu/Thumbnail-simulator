@@ -9,22 +9,25 @@ function App() {
   const [dateOfThePublication, setDateOfThePublication] = useState<string>('');
   const [image, setImage] = useState<string>('');
   const [isLive, setIsLive] = useState<boolean>(false);
+  const [videoLength, setVideoLength] = useState<string>('');
 
   return (
     <>
-      <HeaderBar 
-      title={title} 
-      setTitle={setTitle} 
-      channelName={channelName} 
-      setChannelName={setChannelName} 
-      numberOfViews={Number(numberOfViews)} 
-      setNumberOfViews={setNumberOfViews} 
-      dateOfThePublication={dateOfThePublication} 
-      setDateOfThePublication={setDateOfThePublication} 
-      image={image}
-      setImage={setImage}
-      isLive={isLive}
-      setIsLive={setIsLive}
+      <HeaderBar
+        title={title}
+        setTitle={setTitle}
+        channelName={channelName}
+        setChannelName={setChannelName}
+        numberOfViews={Number(numberOfViews)}
+        setNumberOfViews={setNumberOfViews}
+        dateOfThePublication={dateOfThePublication}
+        setDateOfThePublication={setDateOfThePublication}
+        image={image}
+        setImage={setImage}
+        isLive={isLive}
+        setIsLive={setIsLive}
+        videoLength={videoLength}
+        setVideoLength={setVideoLength}
       />
       <YoutubePage
         title={title}
@@ -33,6 +36,7 @@ function App() {
         timeThatPublicated={dateOfThePublication}
         imgSrc={image}
         isLive={isLive}
+        videoLength={videoLength}
       />
     </>
   )

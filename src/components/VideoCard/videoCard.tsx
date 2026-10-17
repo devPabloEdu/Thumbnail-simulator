@@ -5,13 +5,18 @@ import type { IVideoCard } from "../../types/IVideoCard"
 import { CiPlay1 } from "react-icons/ci";
 import { renderViews } from "../../utils/renderViews";
 import { renderDate } from "../../utils/renderDate";
-const VideoCard = ({ title, channelName, numberOfViews, timeThatPublicated, imgSrc, isLive }: IVideoCard): React.ReactElement => {
+const VideoCard = ({ title, channelName, numberOfViews, timeThatPublicated, imgSrc, isLive, videoLength }: IVideoCard): React.ReactElement => {
     return <div className="d-flex flex-column p-2 VideoCardContainer">
         <Row className="thumbnailWrapper">
             <img src={imgSrc} alt="" />
             {isLive && (
                 <span className="aoVivoSpan">
                     <FiRadio size={12} /> AO VIVO
+                </span>
+            )}
+            {(videoLength && !isLive) && (
+                <span className="videoLengthSpan">
+                    {videoLength}
                 </span>
             )}
         </Row>
