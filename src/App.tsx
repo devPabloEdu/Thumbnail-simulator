@@ -1,6 +1,6 @@
 import { useState } from "react";
 import HeaderBar from "./components/headerBar"
-import YoutubePage from "./pages/youtubePage"
+import YoutubePage from "./pages/homePage/youtubePage"
 
 function App() {
   const [title, setTitle] = useState<string>('');
