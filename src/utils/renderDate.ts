@@ -2,7 +2,7 @@ export function renderDate(date: string) {
     const today = new Date();
     const dateOfPublication = new Date(date);
 
-    const difference = Math.abs(today - dateOfPublication);
+    const difference = Math.abs(Number(today) - Number(dateOfPublication));
     const daysOfDifference = Math.floor(difference / (1000 * 60 * 60 * 24));
     if (daysOfDifference >= 30 && daysOfDifference <= 364) {
         const months = Math.floor(daysOfDifference / 30);
