@@ -10,6 +10,7 @@ function App() {
   const [image, setImage] = useState<string>('');
   const [isLive, setIsLive] = useState<boolean>(false);
   const [videoLength, setVideoLength] = useState<string>('');
+  const [channelIcon, setChannelIcon] = useState<string>('');
 
   return (
     <>
@@ -28,6 +29,8 @@ function App() {
         setIsLive={setIsLive}
         videoLength={videoLength}
         setVideoLength={setVideoLength}
+        channelIcon={channelIcon}
+        setChannelIcon={setChannelIcon}
       />
       <YoutubePage
         title={title}
@@ -37,6 +40,7 @@ function App() {
         imgSrc={image}
         isLive={isLive}
         videoLength={videoLength}
+        channelIcon={channelIcon}
       />
     </>
   )

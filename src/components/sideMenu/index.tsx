@@ -17,7 +17,8 @@ const SideMenu = ({
     isLive,
     setIsLive,
     videoLength,
-    setVideoLength
+    setVideoLength,
+    setChannelIcon
 }: ISideMenu) => {
     const defaultXPosition = 0;
     const defaultYPosition = 80;
@@ -66,6 +67,7 @@ const SideMenu = ({
         setImage('');
         setIsLive?.(false);
         setVideoLength?.('');
+        setChannelIcon('');
     }
 
     return <div
@@ -105,6 +107,21 @@ const SideMenu = ({
             <Form.Group className='mb-3'>
                 <Form.Label>Nome do canal</Form.Label>
                 <Form.Control type='text' onChange={(e) => setChannelName(e.target.value)} value={channelName} />
+            </Form.Group>
+            <Form.Group className='mb-3'>
+                <Form.Label>Icone do canal</Form.Label>
+                <Form.Control
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                        const input = e.currentTarget as HTMLInputElement;
+                        const file = input.files?.[0];
+
+                        if (file) {
+                            setChannelIcon(URL.createObjectURL(file));
+                        }
+                    }}
+                />
             </Form.Group>
             <Form.Group className='mb-3'>
                 <Form.Label>Quantidade de visualizações</Form.Label>

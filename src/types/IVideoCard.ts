@@ -6,4 +6,5 @@ export type IVideoCard = {
     timeThatPublicated?: string;
     isLive?: boolean;
     videoLength?: string;
+    channelIcon?: string;
 }
